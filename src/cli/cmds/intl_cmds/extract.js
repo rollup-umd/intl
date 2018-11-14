@@ -122,7 +122,7 @@ exports.handler = (argv) => {
   const plugins = babelrc.plugins || [];
   plugins.push(['react-intl']);
 
-  if (!pkg.dependencies['react-intl'] || !pkg.devDependencies['react-intl']) {
+  if (!pkg.dependencies['react-intl'] && !pkg.devDependencies['react-intl']) {
     console.log('[Error] - You must use a intl declination to use this command!');
     return;
   }

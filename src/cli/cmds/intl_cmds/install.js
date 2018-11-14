@@ -60,7 +60,7 @@ exports.handler = (argv) => {
       break;
   }
   const pkg = require(path.join(argv.path, 'package.json'));
-  if (!pkg.dependencies['react-intl'] || !pkg.devDependencies['react-intl']) {
+  if (!pkg.dependencies['react-intl'] && !pkg.devDependencies['react-intl']) {
     console.log('[Error] - You must use a intl declination to use this command!');
     return;
   }
