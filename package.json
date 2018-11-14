@@ -1,6 +1,6 @@
 {
   "name": "@rollup-umd/intl",
-  "version": "1.0.2",
+  "version": "0.0.0-development",
   "description": "Manage configuration and extraction of languages within rollup and rollup like application",
   "bin": "lib/cli/index.js",
   "homepage": "https://rollup-umd.github.io/intl",
