@@ -1,7 +1,7 @@
 {
   "name": "@rollup-umd/intl",
   "version": "0.0.0-development",
-  "description": "Manage configuration and extraction of languages within rollup and rollup like application",
+  "description": "Manage react-intl internationalization installation and extraction within Rollup UMD packages and applications. ",
   "bin": "lib/cli/index.js",
   "homepage": "https://rollup-umd.github.io/intl",
   "engines": {
