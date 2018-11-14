@@ -264,22 +264,5 @@
     }
   },
   "declinationId": "cli",
-  "contributors": [],
-  "transitive": {
-    "name": "intl",
-    "scope": "rollup-umd",
-    "scopedName": "@rollup-umd/intl",
-    "homepage": "https://rollup-umd.github.io/intl",
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/rollup-umd/intl.git"
-    },
-    "bugs": {
-      "url": "https://github.com/rollup-umd/intl/issues"
-    },
-    "publishConfig": {
-      "access": "public",
-      "registry": "https://registry.npmjs.org"
-    }
-  }
+  "contributors": []
 }
