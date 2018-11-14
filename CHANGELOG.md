@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/rollup-umd/intl/compare/v1.0.3...v1.0.4) (2018-11-14)
+
+
+### Bug Fixes
+
+* **intl:** added intl ([08d6ff5](https://github.com/rollup-umd/intl/commit/08d6ff5))
+
 ## [1.0.3](https://github.com/rollup-umd/intl/compare/v1.0.2...v1.0.3) (2018-11-14)
 
 
