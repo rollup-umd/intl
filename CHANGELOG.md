@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/rollup-umd/intl/compare/v1.0.8...v1.0.9) (2018-11-14)
+
+
+### Bug Fixes
+
+* **readme:** fix build badge ([70798c1](https://github.com/rollup-umd/intl/commit/70798c1))
+
 ## [1.0.8](https://github.com/rollup-umd/intl/compare/v1.0.7...v1.0.8) (2018-11-14)
 
 
