@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/rollup-umd/intl/compare/v1.0.5...v1.0.6) (2018-11-14)
+
+
+### Bug Fixes
+
+* **doc:** added doc cli ([7b1e767](https://github.com/rollup-umd/intl/commit/7b1e767))
+
 ## [1.0.5](https://github.com/rollup-umd/intl/compare/v1.0.4...v1.0.5) (2018-11-14)
 
 
