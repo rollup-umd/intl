@@ -1,6 +1,6 @@
 {
   "name": "@yeutech/rollup-umd-intl",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "Manage configuration and extraction of languages within rollup and rollup like application",
   "bin": "lib/cli/index.js",
   "homepage": "https://rollup-umd.yeutech.com/rollup-umd-intl",
