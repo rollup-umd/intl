@@ -12,3 +12,5 @@ npx rollup-umd-scripts doc variable \
   CI_PROJECT_NAMESPACE=$(echo $TRAVIS_REPO_SLUG | awk -F / '{print $1}') \
   CI_PROJECT_NAME=$(echo $TRAVIS_REPO_SLUG | awk -F / '{print $2}') \
   IMG_SHIELD_PUBLISHING=$(npx rollup-umd-scripts publish status --badge)
+
+npx @yeutech-lab/rollup-umd-documentation-cli cli-help 
