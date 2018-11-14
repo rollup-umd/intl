@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/rollup-umd/intl/compare/v1.0.1...v1.0.2) (2018-11-14)
+
+
+### Bug Fixes
+
+* **release:** GitHub release https://github.com/rollup-umd/intl ([4e73cfd](https://github.com/rollup-umd/intl/commit/4e73cfd))
+
 ## [1.0.1](https://module.kopaxgroup.com/rollup-umd/rollup-umd-intl/compare/v1.0.0...v1.0.1) (2018-11-14)
 
 
