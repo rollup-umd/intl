@@ -39,10 +39,12 @@
       ]
     },
     {
-      "name": "Code of conduct"
+      "name": "Code of conduct",
+      "content": "CODE_OF_CONDUCT.md"
     },
     {
-      "name": "Changelog"
+      "name": "Changelog",
+      "content": "CHANGELOG.md"
     }
   ],
   "ribbon": {
