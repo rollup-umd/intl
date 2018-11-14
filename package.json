@@ -1,6 +1,6 @@
 {
   "name": "@rollup-umd/intl",
-  "version": "0.0.0-development",
+  "version": "1.0.1",
   "description": "Manage configuration and extraction of languages within rollup and rollup like application",
   "bin": "lib/cli/index.js",
   "homepage": "https://rollup-umd.yeutech.com/rollup-umd-intl",
@@ -28,7 +28,8 @@
     "prepublish": "npm run build",
     "lint-staged": "lint-staged",
     "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide:build": "styleguidist build",
+    "postinstall": "node -e \"console.log('\\u001b[31m@rollup-umd/intl is deprecated, use @rollup-umd/intl instead.')\" || exit 0"
   },
   "repository": {
     "type": "git",
