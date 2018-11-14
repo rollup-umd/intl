@@ -37,6 +37,12 @@
           "content": "docs/release.md"
         }
       ]
+    },
+    {
+      "name": "Code of conduct"
+    },
+    {
+      "name": "Changelog"
     }
   ],
   "ribbon": {
