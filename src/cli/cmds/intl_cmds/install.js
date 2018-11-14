@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 function install(argv, locale, done) {
-  const binPkgJsonPath = path.join(__dirname, '../../../package.json');
+  const binPkgJsonPath = path.join(__dirname, '../../../../package.json');
   const binPkgJson = require(binPkgJsonPath);
   const packageJsonPath = path.join(argv.path, 'package.json');
   const packageJson = require(packageJsonPath);
