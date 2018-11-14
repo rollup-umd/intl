@@ -17,10 +17,28 @@
         {
           "name": "Installation",
           "content": "docs/installation.md"
-        },
+        }
+      ]
+    },
+    {
+      "name": "CLI commands",
+      "content": "docs/cli/index.md",
+      "sections": [
         {
-          "name": "Configuration",
-          "content": "docs/configuration.md"
+          "name": "intl",
+          "content": "docs/cli/intl.md",
+          "sections": [
+            {
+              "name": "extract",
+              "content": "docs/cli/intl/extract.md",
+              "sections": []
+            },
+            {
+              "name": "install",
+              "content": "docs/cli/intl/install.md",
+              "sections": []
+            }
+          ]
         }
       ]
     },
