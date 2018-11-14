@@ -1,6 +1,6 @@
 {
-  "name": "@yeutech/rollup-umd-intl",
-  "version": "1.0.0",
+  "name": "@rollup-umd/intl",
+  "version": "0.0.0-development",
   "description": "Manage configuration and extraction of languages within rollup and rollup like application",
   "bin": "lib/cli/index.js",
   "homepage": "https://rollup-umd.yeutech.com/rollup-umd-intl",
@@ -44,7 +44,7 @@
     "umd",
     "intl"
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "eslintConfig": {
     "parser": "babel-eslint",
     "extends": "airbnb-base",
@@ -207,14 +207,14 @@
   },
   "peerDependencies": {},
   "publishConfig": {
-    "tag": "latest",
-    "registry": "https://npm.kopaxgroup.com"
+    "registry": "https://npm.kopaxgroup.com",
+    "tag": "latest"
   },
   "release": {
     "branch": "master",
     "success": false,
     "fail": false,
-    "npmPublish": false,
+    "npmPublish": true,
     "verifyConditions": [
       {
         "path": "@semantic-release/exec",
@@ -265,5 +265,21 @@
   },
   "declinationId": "cli",
   "contributors": [],
-  "private": true
+  "transitive": {
+    "name": "intl",
+    "scope": "rollup-umd",
+    "scopedName": "@rollup-umd/intl",
+    "homepage": "https://rollup-umd.github.io/intl",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/rollup-umd/intl.git"
+    },
+    "bugs": {
+      "url": "https://github.com/rollup-umd/intl/issues"
+    },
+    "publishConfig": {
+      "access": "public",
+      "registry": "https://registry.npmjs.org"
+    }
+  }
 }
