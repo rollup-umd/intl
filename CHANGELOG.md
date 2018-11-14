@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/rollup-umd/intl/compare/v1.0.9...v1.0.10) (2018-11-14)
+
+
+### Bug Fixes
+
+* **intl:** using intl as default command ([7b50f35](https://github.com/rollup-umd/intl/commit/7b50f35))
+
 ## [1.0.9](https://github.com/rollup-umd/intl/compare/v1.0.8...v1.0.9) (2018-11-14)
 
 
