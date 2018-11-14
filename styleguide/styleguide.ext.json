@@ -40,7 +40,7 @@
     }
   ],
   "ribbon": {
-    "url": "https://module.kopaxgroup.com/rollup-umd/rollup-umd-intl",
-    "text": "Fork us on GitLab"
+    "url": "https://github.com/rollup-umd/intl",
+    "text": "Fork us on GitHub"
   }
 }
