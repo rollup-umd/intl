@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/rollup-umd/intl/compare/v1.0.7...v1.0.8) (2018-11-14)
+
+
+### Bug Fixes
+
+* **doc:** fix prepare.sh ([adad30e](https://github.com/rollup-umd/intl/commit/adad30e))
+
 ## [1.0.7](https://github.com/rollup-umd/intl/compare/v1.0.6...v1.0.7) (2018-11-14)
 
 
