@@ -1,3 +1,10 @@
+## [1.0.11](https://github.com/rollup-umd/intl/compare/v1.0.10...v1.0.11) (2018-11-14)
+
+
+### Bug Fixes
+
+* **readme:** fix sonarcloud links ([ed23655](https://github.com/rollup-umd/intl/commit/ed23655))
+
 ## [1.0.10](https://github.com/rollup-umd/intl/compare/v1.0.9...v1.0.10) (2018-11-14)
 
 
