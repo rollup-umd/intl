@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/rollup-umd/intl/compare/v1.0.4...v1.0.5) (2018-11-14)
+
+
+### Bug Fixes
+
+* **deploy:** fixed documentation deployment ([f5457c7](https://github.com/rollup-umd/intl/commit/f5457c7))
+
 ## [1.0.4](https://github.com/rollup-umd/intl/compare/v1.0.3...v1.0.4) (2018-11-14)
 
 
