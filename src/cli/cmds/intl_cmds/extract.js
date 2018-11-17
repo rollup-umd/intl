@@ -10,6 +10,7 @@ const shell = require('shelljs');
 const { transform } = require('babel-core');
 const { animateProgress, addCheckMark } = require('kopaxgroup-cli-helpers');
 require('shelljs/global');
+const { spawn } = require('../../utils');
 
 // Glob to match all js files except test files
 const FILES_TO_PARSE = 'src/**/!(*.test).js';
