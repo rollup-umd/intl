@@ -22,3 +22,7 @@ sonar-project.properties
 /styleguide
 /reports
 /*.tgz
+src/setupTests.js
+translation
+**/*.spec.js
+**/*.test.js
