@@ -114,7 +114,7 @@ exports.builder = (yargs) => yargs
   })
   .option('babel-rc', {
     alias: 'r',
-    describe: 'Specify babelrc location (while take precedence over --babel-config if used)',
+    describe: 'Specify .babelrc location (will take precedence over --babel-config if used)',
   });
 exports.handler = (argv) => {
   argv.path = acceptDotPath(argv.path, process.cwd());
