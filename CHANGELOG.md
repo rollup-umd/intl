@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/rollup-umd/intl/compare/v1.0.14...v1.1.0) (2018-11-20)
+
+
+### Features
+
+* **babel:** Upgrade to babel 7 ([25bd513](https://github.com/rollup-umd/intl/commit/25bd513))
+
 ## [1.0.14](https://github.com/rollup-umd/intl/compare/v1.0.13...v1.0.14) (2018-11-20)
 
 
