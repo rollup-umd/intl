@@ -1,3 +1,10 @@
+## [1.0.14](https://github.com/rollup-umd/intl/compare/v1.0.13...v1.0.14) (2018-11-20)
+
+
+### Performance Improvements
+
+* **babel:** BREAKING CHANGE\nSwitch to babel 7, remove useless deps ([29aeb61](https://github.com/rollup-umd/intl/commit/29aeb61))
+
 ## [1.0.13](https://github.com/rollup-umd/intl/compare/v1.0.12...v1.0.13) (2018-11-20)
 
 
