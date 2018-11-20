@@ -43,7 +43,8 @@
     "yeutech.vn",
     "rollup",
     "umd",
-    "intl"
+    "intl",
+    "react-intl"
   ],
   "license": "MIT",
   "eslintConfig": {
