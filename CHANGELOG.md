@@ -1,3 +1,15 @@
+## [1.0.13](https://github.com/rollup-umd/intl/compare/v1.0.12...v1.0.13) (2018-11-20)
+
+
+### Bug Fixes
+
+* **babel:** Upgrade to babel 7 ([5a944af](https://github.com/rollup-umd/intl/commit/5a944af))
+
+
+### Performance Improvements
+
+* **babel:** Upgrade to babel 7 ([7ad620c](https://github.com/rollup-umd/intl/commit/7ad620c))
+
 ## [1.0.12](https://github.com/rollup-umd/intl/compare/v1.0.11...v1.0.12) (2018-11-17)
 
 
