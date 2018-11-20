@@ -3,13 +3,16 @@
  * This script will extract the internationalization messages from all components
  and package them in the translation json files in the translations file.
  */
-const fs = require('fs');
-const path = require('path');
-const nodeGlob = require('glob');
-const shell = require('shelljs');
-const { transform } = require('babel-core');
-const { animateProgress, addCheckMark } = require('kopaxgroup-cli-helpers');
+
 require('shelljs/global');
+
+const fs = require('fs');
+const nodeGlob = require('glob');
+const { transform } = require('@babel/core');
+const get = require('lodash.get');
+const { animateProgress, addCheckMark } = require('kopaxgroup-cli-helpers');
+const path = require('path');
+const acceptDotPath = require('@yeutech-lab/accept-dot-path/lib');
 const { spawn } = require('../../utils');
 
 // Glob to match all js files except test files
@@ -41,14 +44,9 @@ const readFile = (fileName) => new Promise((resolve, reject) => {
   fs.readFile(fileName, (error, value) => (error ? reject(error) : resolve(value)));
 });
 
-const writeFile = (fileName, data) => new Promise((resolve, reject) => {
-  fs.writeFile(fileName, data, (error, value) => (error ? reject(error) : resolve(value)));
-});
-
 const doSpawn = (cmd) => new Promise((resolve, reject) => {
   spawn(cmd, (error, value) => (error ? reject(error) : resolve(value)));
 });
-
 
 // Store existing translations into memory
 const oldLocaleMappings = [];
@@ -76,12 +74,14 @@ const setOldLocalMappings = (argv, locales) => {
   });
 };
 
-const extractFromFile = async (argv, fileName, defaultLocale, locales, presets, plugins) => {
+const extractFromFile = async (argv, filename, defaultLocale, locales, presets, plugins) => {
   try {
-    const code = await readFile(fileName);
-    // Use babel plugin to extract instances where react-intl is used
-    const { metadata: result } = await transform(code, { presets, plugins }); // object-shorthand
-    for (const message of result['react-intl'].messages) {
+    const code = await readFile(filename);
+
+    const output = await transform(code, { filename, presets, plugins });
+    const messages = get(output, 'metadata.react-intl.messages', []);
+
+    for (const message of messages) {
       for (const locale of locales) {
         const oldLocaleMapping = oldLocaleMappings[locale][message.id];
         // Merge old translations into the babel extracted instances where react-intl is used
@@ -90,7 +90,7 @@ const extractFromFile = async (argv, fileName, defaultLocale, locales, presets, 
       }
     }
   } catch (error) {
-    process.stderr.write(`Error transforming file: ${fileName}\n${error}`);
+    process.stderr.write(`Error transforming file: ${filename}\n${error}`);
   }
 };
 
@@ -106,22 +106,60 @@ exports.builder = (yargs) => yargs
     alias: 't',
     describe: 'Output target directory',
     default: 'translation',
+  })
+  .option('babel-config', {
+    alias: 'b',
+    describe: 'Specify babel.config.js location',
+    default: 'babel.config.js',
+  })
+  .option('babel-rc', {
+    alias: 'r',
+    describe: 'Specify babelrc location (while take precedence over --babel-config if used)',
   });
 exports.handler = (argv) => {
-  switch (argv.path[0]) {
-    case '/':
-      break;
-    default:
-      argv.path = argv.path[1] === '/' ? path.join(process.cwd(), argv.path.slice(2)) : path.join(process.cwd(), argv.path);
-      break;
-  }
+  argv.path = acceptDotPath(argv.path, process.cwd());
   const pkg = require(path.join(argv.path, 'package.json'));
-  const babelRcPath = path.join(argv.path, '.babelrc');
+  const babelConfigPath = path.join(argv.path, argv.babelConfig);
+  const babelRcPath = path.join(argv.path, argv.babelRc || '.babelrc');
 
-  const babelrc = fs.existsSync(babelRcPath) ? JSON.parse(fs.readFileSync(babelRcPath, 'utf-8')) : { presets: ['react-app'] };
-  const { presets } = babelrc;
-  const plugins = babelrc.plugins || [];
-  plugins.push(['react-intl']);
+  let babelConfig = {};
+  if (fs.existsSync(babelConfigPath) && !argv.babelRc) {
+    babelConfig = require(babelConfigPath);
+  } else if (argv.babelRc && fs.existsSync(babelRcPath)) {
+    babelConfig = JSON.parse(fs.readFileSync(babelRcPath, 'utf-8'));
+  } else {
+    console.log(`[Warning] Could not locate your babel configuration in ${argv.babelRc || argv.babelConfig}, maybe you are missing --babel-config or --babel-rc options, it will try to use default presets and plugins (as in create-react-app)`);
+  }
+
+  // we use defaults presets and plugins for react if nothing is found
+  babelConfig.presets = babelConfig.presets || ['@babel/preset-react'];
+  babelConfig.plugins = babelConfig.plugins || [
+    '@babel/plugin-transform-runtime',
+    '@babel/plugin-transform-async-to-generator',
+    '@babel/plugin-proposal-class-properties',
+    '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-proposal-json-strings',
+    [
+      '@babel/plugin-proposal-decorators',
+      {
+        legacy: true,
+      },
+    ],
+  ];
+  // do not use presets that are not installed
+  babelConfig.presets = babelConfig.presets.filter((preset) => {
+    const name = typeof preset === 'string' ? preset : preset[0];
+    return !!fs.existsSync(path.join(argv.path, 'node_modules', name));
+  });
+
+  // do not use plugins that are not installed
+  babelConfig.plugins = babelConfig.plugins.filter((plugin) => {
+    const name = typeof plugin === 'string' ? plugin : plugin[0];
+    return !!fs.existsSync(path.join(argv.path, 'node_modules', name));
+  });
+
+  // we add react-intl plugins to the list
+  babelConfig.plugins.push(['react-intl']);
 
   if (!pkg.dependencies['react-intl'] && !pkg.devDependencies['react-intl']) {
     console.log('[Error] - You must use a intl declination to use this command!');
@@ -141,10 +179,10 @@ exports.handler = (argv) => {
     const extractTaskDone = task('Run extraction on all files');
 
 
-    if (presets.indexOf('react-app') !== -1 && Object.keys(pkg.devDependencies || {}).indexOf('babel-preset-react-app') === -1) {
-      console.log('\nRequired dependencies will be installed: babel-cli babel-plugin-react-intl babel-preset-react-app\n');
+    if (babelConfig.presets.indexOf('react') !== -1 && Object.keys(pkg.devDependencies || {}).indexOf('@babel/preset-react') === -1) {
+      console.log('\nRequired dependencies will be installed: @babel/cli babel-plugin-react-intl @babel/preset-react\n');
       try {
-        await doSpawn(`npm install --prefix ${argv.path} babel-cli babel-plugin-react-intl babel-preset-react-app --save-dev`);
+        await doSpawn(`npm install --prefix ${argv.path} @babel/cli babel-plugin-react-intl @babel/preset-react --save-dev`);
       } catch (e) {
         throw e;
       }
@@ -153,31 +191,32 @@ exports.handler = (argv) => {
     setOldLocalMappings(argv, pkg.translation.locales);
 
     // Run extraction on all files that match the glob on line 16
-    await Promise.all(files.map((fileName) => extractFromFile(argv, fileName, pkg.translation.locale, pkg.translation.locales, presets, plugins)));
+    await Promise.all(files.map((fileName) => extractFromFile(argv, fileName, pkg.translation.locale, pkg.translation.locales, babelConfig.presets, babelConfig.plugins)));
 
     extractTaskDone();
 
-    if (!fs.existsSync(argv.target)) {
-      shell.mkdir('-p', argv.target);
-    }
+    // Make the directory if it doesn't exist, especially for first run
+    mkdir('-p', argv.target); // eslint-disable-line
+
+    let localeTaskDone;
+    let translationFileName;
 
     for (const locale of pkg.translation.locales) {
-      const translationFileName = `${argv.target}/${locale}.json`;
+      translationFileName = `${argv.target}/${locale}.json`;
+      localeTaskDone = task(`Writing translation messages for ${locale} to: ${translationFileName}`);
+
+      // Sort the translation JSON file so that git diffing is easier
+      // Otherwise the translation messages will jump around every time we extract
+      const messages = {};
+      Object.keys(localeMappings[locale]).sort().forEach((key) => {
+        messages[key] = localeMappings[locale][key];
+      });
+
+      // Write to file the JSON representation of the translation messages
+      const prettified = `${JSON.stringify(messages, null, 2)}\n`;
 
       try {
-        const localeTaskDone = task(`Writing translation messages for ${locale} to: ${translationFileName}`);
-
-        // Sort the translation JSON file so that git diffing is easier
-        // Otherwise the translation messages will jump around every time we extract
-        const messages = {};
-        Object.keys(localeMappings[locale]).sort().forEach((key) => {
-          messages[key] = localeMappings[locale][key];
-        });
-
-        // Write to file the JSON representation of the translation messages
-        const prettified = `${JSON.stringify(messages, null, 2)}\n`;
-        await writeFile(translationFileName, prettified);
-
+        await fs.writeFileSync(translationFileName, prettified);
         localeTaskDone();
       } catch (error) {
         localeTaskDone(`There was an error saving this translation file: ${translationFileName}
