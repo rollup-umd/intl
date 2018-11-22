@@ -132,7 +132,15 @@ exports.handler = (argv) => {
   }
 
   // we use defaults presets and plugins for react if nothing is found
-  babelConfig.presets = babelConfig.presets || ['@babel/preset-react'];
+  babelConfig.presets = babelConfig.presets || [
+    [
+      '@babel/preset-env',
+      {
+        modules: false,
+      },
+    ],
+    '@babel/preset-react',
+  ];
   babelConfig.plugins = babelConfig.plugins || [
     '@babel/plugin-transform-runtime',
     '@babel/plugin-transform-async-to-generator',
@@ -146,16 +154,21 @@ exports.handler = (argv) => {
       },
     ],
   ];
+
   // do not use presets that are not installed
   babelConfig.presets = babelConfig.presets.filter((preset) => {
     const name = typeof preset === 'string' ? preset : preset[0];
-    return !!fs.existsSync(path.join(argv.path, 'node_modules', name));
+    const absPath = fs.existsSync(name);
+    const relPath = fs.existsSync(path.join(argv.path, 'node_modules', name));
+    return absPath || relPath;
   });
 
   // do not use plugins that are not installed
   babelConfig.plugins = babelConfig.plugins.filter((plugin) => {
     const name = typeof plugin === 'string' ? plugin : plugin[0];
-    return !!fs.existsSync(path.join(argv.path, 'node_modules', name));
+    const absPath = fs.existsSync(name);
+    const relPath = fs.existsSync(path.join(argv.path, 'node_modules', name));
+    return absPath || relPath;
   });
 
   // we add react-intl plugins to the list
