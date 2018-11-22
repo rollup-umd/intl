@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/rollup-umd/intl/compare/v1.1.0...v1.1.1) (2018-11-22)
+
+
+### Bug Fixes
+
+* **extract:** extract was not testing for rel or abs path created with babel-merge ([053f697](https://github.com/rollup-umd/intl/commit/053f697))
+* **extract:** fix extract message ([c921ade](https://github.com/rollup-umd/intl/commit/c921ade))
+
 # [1.1.0](https://github.com/rollup-umd/intl/compare/v1.0.14...v1.1.0) (2018-11-20)
 
 
