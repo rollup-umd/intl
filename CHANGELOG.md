@@ -1,3 +1,100 @@
+## [1.1.1](https://github.com/rollup-umd/intl/compare/v1.1.0...v1.1.1) (2018-11-22)
+
+
+### Bug Fixes
+
+* **extract:** extract was not testing for rel or abs path created with babel-merge ([053f697](https://github.com/rollup-umd/intl/commit/053f697))
+* **extract:** fix extract message ([c921ade](https://github.com/rollup-umd/intl/commit/c921ade))
+
+# [1.1.0](https://github.com/rollup-umd/intl/compare/v1.0.14...v1.1.0) (2018-11-20)
+
+
+### Features
+
+* **babel:** Upgrade to babel 7 ([25bd513](https://github.com/rollup-umd/intl/commit/25bd513))
+
+## [1.0.14](https://github.com/rollup-umd/intl/compare/v1.0.13...v1.0.14) (2018-11-20)
+
+
+### Performance Improvements
+
+* **babel:** BREAKING CHANGE\nSwitch to babel 7, remove useless deps ([29aeb61](https://github.com/rollup-umd/intl/commit/29aeb61))
+
+## [1.0.13](https://github.com/rollup-umd/intl/compare/v1.0.12...v1.0.13) (2018-11-20)
+
+
+### Bug Fixes
+
+* **babel:** Upgrade to babel 7 ([5a944af](https://github.com/rollup-umd/intl/commit/5a944af))
+
+
+### Performance Improvements
+
+* **babel:** Upgrade to babel 7 ([7ad620c](https://github.com/rollup-umd/intl/commit/7ad620c))
+
+## [1.0.12](https://github.com/rollup-umd/intl/compare/v1.0.11...v1.0.12) (2018-11-17)
+
+
+### Bug Fixes
+
+* **intl:** extract command was missing importof spawn ([c0340d1](https://github.com/rollup-umd/intl/commit/c0340d1))
+
+## [1.0.11](https://github.com/rollup-umd/intl/compare/v1.0.10...v1.0.11) (2018-11-14)
+
+
+### Bug Fixes
+
+* **readme:** fix sonarcloud links ([ed23655](https://github.com/rollup-umd/intl/commit/ed23655))
+
+## [1.0.10](https://github.com/rollup-umd/intl/compare/v1.0.9...v1.0.10) (2018-11-14)
+
+
+### Bug Fixes
+
+* **intl:** using intl as default command ([7b50f35](https://github.com/rollup-umd/intl/commit/7b50f35))
+
+## [1.0.9](https://github.com/rollup-umd/intl/compare/v1.0.8...v1.0.9) (2018-11-14)
+
+
+### Bug Fixes
+
+* **readme:** fix build badge ([70798c1](https://github.com/rollup-umd/intl/commit/70798c1))
+
+## [1.0.8](https://github.com/rollup-umd/intl/compare/v1.0.7...v1.0.8) (2018-11-14)
+
+
+### Bug Fixes
+
+* **doc:** fix prepare.sh ([adad30e](https://github.com/rollup-umd/intl/commit/adad30e))
+
+## [1.0.7](https://github.com/rollup-umd/intl/compare/v1.0.6...v1.0.7) (2018-11-14)
+
+
+### Bug Fixes
+
+* **documentation:** fix documentation ([37428bb](https://github.com/rollup-umd/intl/commit/37428bb))
+
+## [1.0.6](https://github.com/rollup-umd/intl/compare/v1.0.5...v1.0.6) (2018-11-14)
+
+
+### Bug Fixes
+
+* **doc:** added doc cli ([7b1e767](https://github.com/rollup-umd/intl/commit/7b1e767))
+
+## [1.0.5](https://github.com/rollup-umd/intl/compare/v1.0.4...v1.0.5) (2018-11-14)
+
+
+### Bug Fixes
+
+* **deploy:** fixed documentation deployment ([f5457c7](https://github.com/rollup-umd/intl/commit/f5457c7))
+
+## [1.0.4](https://github.com/rollup-umd/intl/compare/v1.0.3...v1.0.4) (2018-11-14)
+
+
+### Bug Fixes
+
+* **intl:** added intl ([08d6ff5](https://github.com/rollup-umd/intl/commit/08d6ff5))
+
 ## [1.0.3](https://github.com/rollup-umd/intl/compare/v1.0.2...v1.0.3) (2018-11-14)
 
 
