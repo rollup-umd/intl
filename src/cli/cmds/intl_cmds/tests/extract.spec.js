@@ -19,6 +19,10 @@ const pkgProject = require(path.join(basePathProject, 'package.json'));
 const defaultLocaleMessages = path.join(basePathProject, `translation/${pkgProject.translation.locale}.json`);
 
 describe('extract', () => {
+  beforeEach(() => {
+    jest.setTimeout(10000);
+  });
+
   beforeAll((done) => {
     exec('npm run build:lib', () => {
       exec('npm run extract-intl', () => {
