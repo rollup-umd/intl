@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/rollup-umd/intl/compare/v1.2.0...v1.2.1) (2019-02-12)
+
+
+### Bug Fixes
+
+* **package:** update yargs to version 13.1.0 ([c151d04](https://github.com/rollup-umd/intl/commit/c151d04))
+
 # [1.2.0](https://github.com/rollup-umd/intl/compare/v1.1.1...v1.2.0) (2018-12-16)
 
 
