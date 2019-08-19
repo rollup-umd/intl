@@ -226,7 +226,7 @@
     "kopaxgroup-cli-helpers": "0.0.3",
     "lodash.get": "^4.4.2",
     "shelljs": "^0.8.3",
-    "yargs": "^13.1.0"
+    "yargs": "^14.0.0"
   },
   "peerDependencies": {},
   "publishConfig": {
