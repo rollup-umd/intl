@@ -206,7 +206,7 @@
     "react": "^16.6.3",
     "react-intl": "^2.7.2",
     "react-styleguidist": "^8.0.6",
-    "semantic-release": "^15.13.0",
+    "semantic-release": "^16.0.0",
     "sinon": "^7.2.2",
     "toctoc": "^0.3.2",
     "webpack": "^4.27.1"
