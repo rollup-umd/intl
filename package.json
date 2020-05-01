@@ -25,11 +25,12 @@
     "test:clean": "rimraf ./coverage",
     "test:watch": "npm run test -- --watch",
     "lint": "eslint src",
-    "prepublish": "npm run build",
+    "prepublish": "npm run snyk-protect && npm run build",
     "lint-staged": "lint-staged",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
-    "extract-intl": "npm run build:lib && node lib/cli extract"
+    "extract-intl": "npm run build:lib && node lib/cli extract",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -226,7 +227,8 @@
     "kopaxgroup-cli-helpers": "0.0.3",
     "lodash.get": "^4.4.2",
     "shelljs": "^0.8.3",
-    "yargs": "^13.1.0"
+    "yargs": "^13.1.0",
+    "snyk": "^*"
   },
   "peerDependencies": {},
   "publishConfig": {
@@ -288,5 +290,6 @@
     }
   },
   "declinationId": "cli",
-  "contributors": []
+  "contributors": [],
+  "snyk": true
 }
